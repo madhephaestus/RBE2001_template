@@ -18,17 +18,11 @@ class DiscoveryPacket : public PacketEventAbstract {
   void event(float *buffer);
 
   protected:
-  bool parseAndAttachPacket(byte *buffer);
-
-
+  bool parsePacket(byte *buffer);
+  bool parseIsResourceInRange(byte *buffer);
+  bool parseProvisionResource(byte *buffer);
+  bool parseDiscoveryPacket(byte *buffer);
 
   UDPSimplePacket *coms;
-
-  int typeIndex{0};
-  int packetIdIndex{1};
-  int resourceTypeIndex{2};
-  int attachmentPointIndex{3};
-
-  int discoveryType{12};
 };
 #endif
