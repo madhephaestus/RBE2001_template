@@ -25,15 +25,6 @@
 #include <Esp32SimplePacketComs.h>
 #include <wifi/WifiManager.h>
 #include <server/NameCheckerServer.h>
-#include "commands/GetPIDConstants.h"
-#include "commands/GetPIDData.h"
-#include "commands/SetPIDConstants.h"
-#include "commands/SetPIDSetpoint.h"
-#include "commands/Approve.h"
-#include "commands/ClearFaults.h"
-#include "commands/EStop.h"
-#include "commands/GetStatus.h"
-#include "commands/PickOrder.h"
 #include "commands/DiscoveryPacket.h"
 #include "../StudentsRobot.h"
 enum state_t {

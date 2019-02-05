@@ -70,21 +70,7 @@ void RobotControlCenter::setup() {
 
 #if defined(USE_WIFI)
 	// Attach coms
-	coms.attach(new NameCheckerServer(name)); // @suppress("Method cannot be resolved")
-	coms.attach(new SetPIDSetpoint(numberOfPID, pidList)); // @suppress("Method cannot be resolved")
-	coms.attach(new SetPIDConstants(numberOfPID, pidList)); // @suppress("Method cannot be resolved")
-	coms.attach(new GetPIDData(numberOfPID, pidList)); // @suppress("Method cannot be resolved")
-	coms.attach( // @suppress("Method cannot be resolved")
-			new GetPIDConstants(numberOfPID, pidList));
-	coms.attach(new EStop(robot)); // @suppress("Method cannot be resolved")
-	// clear any fault command
-	coms.attach(new ClearFaults(robot));// @suppress("Method cannot be resolved")
-	// Pick up an panel command
-	coms.attach(new PickOrder(robot));// @suppress("Method cannot be resolved")
-	// Get the status of the robot
-	coms.attach(new GetStatus(robot));// @suppress("Method cannot be resolved")
-	// Approve a procede command from the controller
-	coms.attach(new Approve(robot));// @suppress("Method cannot be resolved")
+	coms.attach(new NameCheckerServer(name));
 	coms.attach(new DiscoveryPacket(&coms));
 #endif
 
