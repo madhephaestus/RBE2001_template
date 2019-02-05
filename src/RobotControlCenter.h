@@ -34,6 +34,7 @@
 #include "commands/EStop.h"
 #include "commands/GetStatus.h"
 #include "commands/PickOrder.h"
+#include "commands/DiscoveryPacket.h"
 #include "../StudentsRobot.h"
 enum state_t {
 	Startup, WaitForConnect, run

@@ -85,6 +85,7 @@ void RobotControlCenter::setup() {
 	coms.attach(new GetStatus(robot));// @suppress("Method cannot be resolved")
 	// Approve a procede command from the controller
 	coms.attach(new Approve(robot));// @suppress("Method cannot be resolved")
+	coms.attach(new DiscoveryPacket(&coms));
 #endif
 
 }
