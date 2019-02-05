@@ -41,12 +41,64 @@ bool DiscoveryPacket::parseAndAttachPacket(byte *buffer) {
     byte packetId = buffer[1];
     byte resourceType = buffer[2];
     byte attachmentPoint = buffer[3];
-    if (resourceType == 1) {
-        coms->attach(new TestPacket((int) packetId));
-        return true;
-    } else {
-        Serial.println("invalid resource type");
-    }
+    switch (resourceType) {
+        case 1:
+            // DigitalIn
+            coms->attach(new TestPacket((int) packetId));
+            return true;
 
-    return false;
+        case 2:
+            // DigitalOut
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        case 3:
+            // AnalogIn
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        case 4:
+            // AnalogOut
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        case 5:
+            // SerialConnection
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        case 6:
+            // Servo
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        case 7:
+            // Stepper
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        case 8:
+            // Encoder
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        case 9:
+            // Button
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        case 10:
+            // Ultrasonic
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        case 11:
+            // PiezoelectricSpeaker
+            coms->attach(new TestPacket((int) packetId));
+            return true
+
+        default:
+            Serial.println("invalid resource type");
+            return false;
+    }
 }
