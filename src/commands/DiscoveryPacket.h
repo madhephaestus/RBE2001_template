@@ -1,8 +1,7 @@
-#if !defined(DISCOVERYPACKET_H)
-#define DISCOVERYPACKET_H
+#pragma once
+
 #include <Esp32SimplePacketComs.h>
 #include <SimplePacketComs.h>
-#include <cstdint>
 
 class DiscoveryPacket : public PacketEventAbstract {
   public:
@@ -18,11 +17,10 @@ class DiscoveryPacket : public PacketEventAbstract {
   void event(float *buffer);
 
   protected:
-  bool parsePacket(byte *buffer);
-  bool parseIsResourceInRange(byte *buffer);
-  bool parseProvisionResource(byte *buffer);
-  bool parseDiscoveryPacket(byte *buffer);
+  bool parsePacket(std::int8_t *buffer);
+  bool parseIsResourceInRange(std::int8_t *buffer);
+  bool parseProvisionResource(std::int8_t *buffer);
+  bool parseDiscoveryPacket(std::int8_t *buffer);
 
   UDPSimplePacket *coms;
 };
-#endif
