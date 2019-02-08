@@ -1,5 +1,4 @@
 #include "DigitalInResource.h"
-#include <Arduino.h>
 
 // User function to be called when a packet comes in
 // Buffer contains data from the packet coming in at the start of the function
@@ -13,8 +12,4 @@ void DigitalInResource::event(float *buffer) {
   }
 
   buf[0] = digitalRead(pin);
-}
-
-void DigitalInResource::provision(std::uint8_t pin) {
-  pinMode(pin, INPUT);
 }

@@ -19,7 +19,6 @@ class DiscoveryPacket : public PacketEventAbstract {
   protected:
   bool parsePacket(std::int8_t *buffer);
   bool parseIsResourceInRange(std::int8_t *buffer);
-  bool parseProvisionResource(std::int8_t *buffer);
   bool parseDiscoveryPacket(std::int8_t *buffer);
 
   UDPSimplePacket *coms;

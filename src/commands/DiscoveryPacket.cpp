@@ -8,7 +8,6 @@
 
 #define DISCOVERY_OP 1
 #define IS_RESOURCE_IN_RANGE_OP 2
-#define PROVISION_RESOURCE_OP 3
 
 // User function to be called when a packet comes in
 // Buffer contains data from the packet coming in at the start of the function
@@ -48,9 +47,6 @@ bool DiscoveryPacket::parsePacket(std::int8_t *buffer) {
 
   case IS_RESOURCE_IN_RANGE_OP:
     return parseIsResourceInRange(buffer);
-
-  case PROVISION_RESOURCE_OP:
-    return parseProvisionResource(buffer);
 
   default:
     return false;
@@ -198,177 +194,6 @@ bool DiscoveryPacket::parseIsResourceInRange(std::int8_t *buffer) {
     case 2: {
       // PinGroup
       std::int8_t count = buffer[attachmentPointIndex + 1];
-      switch (count) {
-      case 2:
-        return true;
-
-      default:
-        return false;
-      }
-    }
-
-    default:
-      return false;
-    }
-  }
-
-  case 11: {
-    // PiezoelectricSpeaker
-    switch (attachmentPoint) {
-    case 1:
-      // Pin
-      return true;
-
-    default:
-      return false;
-    }
-  }
-
-  default:
-    Serial.println("invalid resource type");
-    return false;
-  }
-}
-
-bool DiscoveryPacket::parseProvisionResource(std::int8_t *buffer) {
-  int attachmentPointIndex = 2;
-  std::uint8_t resourceType = buffer[1];
-  std::uint8_t attachmentPoint = buffer[attachmentPointIndex];
-  switch (resourceType) {
-  case 1: {
-    // DigitalIn
-    switch (attachmentPoint) {
-    case 1: {
-      // Pin
-      DigitalInResource::provision(buffer[attachmentPointIndex + 1]);
-      return true;
-    }
-
-    default:
-      return false;
-    }
-  }
-
-  case 2: {
-    // DigitalOut
-    switch (attachmentPoint) {
-    case 1: {
-      // Pin
-      DigitalOutResource::provision(buffer[attachmentPointIndex + 1]);
-      return true;
-    }
-
-    default:
-      return false;
-    }
-  }
-
-  case 3: {
-    // AnalogIn
-    switch (attachmentPoint) {
-    case 1: {
-      // Pin
-      AnalogInResource::provision(buffer[attachmentPointIndex + 1]);
-      return true;
-    }
-
-    default:
-      return false;
-    }
-  }
-
-  case 4: {
-    // AnalogOut
-    switch (attachmentPoint) {
-    case 1: {
-      // Pin
-      AnalogOutResource::provision(buffer[attachmentPointIndex + 1]);
-      return true;
-    }
-
-    default:
-      return false;
-    }
-  }
-
-  case 5: {
-    // SerialConnection
-    return false;
-  }
-
-  case 6: {
-    // Servo
-    switch (attachmentPoint) {
-    case 1: {
-      // Pin
-      return true;
-    }
-
-    default:
-      return false;
-    }
-  }
-
-  case 7:
-    // Stepper
-    switch (attachmentPoint) {
-    case 2: {
-      // PinGroup
-      std::int8_t count = buffer[attachmentPoint + 1];
-      switch (count) {
-      case 2:
-        return true;
-
-      case 4:
-        return true;
-
-      default:
-        return false;
-      }
-    }
-
-    default:
-      return false;
-    }
-
-  case 8: {
-    // Encoder
-    switch (attachmentPoint) {
-    case 2: {
-      // PinGroup
-      std::int8_t count = buffer[attachmentPoint + 1];
-      switch (count) {
-      case 2:
-        return true;
-
-      default:
-        return false;
-      }
-    }
-
-    default:
-      return false;
-    }
-  }
-
-  case 9: {
-    // Button
-    switch (attachmentPoint) {
-    case 1:
-      // Pin
-      return true;
-
-    default:
-      return false;
-    }
-  }
-
-  case 10: {
-    // Ultrasonic
-    switch (attachmentPoint) {
-    case 2: {
-      // PinGroup
-      std::int8_t count = buffer[attachmentPoint + 1];
       switch (count) {
       case 2:
         return true;

@@ -1,5 +1,4 @@
 #include "AnalogOutResource.h"
-#include <Arduino.h>
 
 // User function to be called when a packet comes in
 // Buffer contains data from the packet coming in at the start of the function
@@ -16,12 +15,5 @@ void AnalogOutResource::event(float *buffer) {
 #if defined(ARDUINO_ARCH_ESP32)
 #else
   analogWrite(pin, value);
-#endif
-}
-
-void AnalogOutResource::provision(std::uint8_t pin) {
-#if defined(ARDUINO_ARCH_ESP32)
-#else
-  pinMode(pin, OUTPUT);
 #endif
 }

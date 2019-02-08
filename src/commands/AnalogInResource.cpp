@@ -1,5 +1,4 @@
 #include "AnalogInResource.h"
-#include <Arduino.h>
 
 // User function to be called when a packet comes in
 // Buffer contains data from the packet coming in at the start of the function
@@ -15,8 +14,4 @@ void AnalogInResource::event(float *buffer) {
   int value = analogRead(pin);
   buf[0] = value & 0xF;
   buf[1] = value & 0xF0;
-}
-
-void AnalogInResource::provision(std::uint8_t pin) {
-  pinMode(pin, INPUT);
 }

@@ -1,5 +1,4 @@
 #include "EncoderResource.h"
-#include <Arduino.h>
 
 // User function to be called when a packet comes in
 // Buffer contains data from the packet coming in at the start of the function
@@ -21,12 +20,4 @@ void EncoderResource::event(float *buffer) {
   buf[1] = value & 0xF0;
   buf[2] = value & 0xF00;
   buf[3] = value & 0xF000;
-}
-
-void EncoderResource::provision(std::uint8_t pin1, std::uint8_t pin2) {
-#if defined(ARDUINO_ARCH_ESP32)
-    enc.attachHalfQuad(pin1, pin2);
-#else
-    enc = Encoder(pin1, pin2);
-#endif
 }
