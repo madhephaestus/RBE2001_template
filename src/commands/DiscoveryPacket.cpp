@@ -3,6 +3,7 @@
 #include "AnalogOutResource.h"
 #include "DigitalInResource.h"
 #include "DigitalOutResource.h"
+#include "EncoderResource.h"
 #include "TestPacket.h"
 #include <Arduino.h>
 
@@ -351,6 +352,7 @@ bool DiscoveryPacket::parseDiscoveryPacket(std::int8_t *buffer) {
       case 2: {
         std::uint8_t pin1 = buffer[attachmentPointIndex + 2];
         std::uint8_t pin2 = buffer[attachmentPointIndex + 3];
+        coms->attach(new EncoderResource(packetId, pin1, pin2));
         return true;
       }
 

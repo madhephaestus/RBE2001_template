@@ -10,10 +10,11 @@ void EncoderResource::event(float *buffer) {
   for (int i = 0; i < 60; i++) {
     buf[i] = 0;
   }
+
 #if defined(ARDUINO_ARCH_ESP32)
-    std::int32_t value = enc.getCount();
+  std::int32_t value = enc.getCount();
 #else
-    std::int32_t value = enc.read();
+  std::int32_t value = enc.read();
 #endif
 
   buf[0] = value & 0xF;
