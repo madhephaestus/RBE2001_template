@@ -11,7 +11,8 @@
 
 class DiscoveryPacket : public PacketEventAbstract {
   public:
-  DiscoveryPacket(UDPSimplePacket *icoms) : PacketEventAbstract(DISCOVERY_PACKET_ID), coms(icoms) {
+  DiscoveryPacket(UDPSimplePacket *icoms) : PacketEventAbstract(DISCOVERY_PACKET_ID) {
+    coms=icoms;
   }
 
   virtual ~DiscoveryPacket() {
